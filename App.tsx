@@ -26,8 +26,8 @@ const TimesheetApp = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen font-sans antialiased text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-900">
-      <header className="flex-shrink-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700/50">
+    <div className="flex flex-col min-h-screen font-sans antialiased text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-900">
+      <header className="sticky top-0 z-10 flex-shrink-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700/50">
         <div className="container mx-auto px-6 py-3 flex justify-between items-center">
           <h1 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 dark:from-blue-400 dark:to-teal-300">
             Timesheet Pencapaian AI
@@ -43,10 +43,10 @@ const TimesheetApp = () => {
         </div>
       </header>
       
-      <main className="flex-1 overflow-hidden p-4 lg:p-6">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 h-full">
+      <main className="flex-1 p-4 lg:p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           
-          <div className="lg:col-span-3 flex flex-col gap-6 overflow-y-auto pr-2">
+          <div className="lg:col-span-3 flex flex-col gap-6">
             <TimesheetForm 
               addEntry={addEntry} 
               editingEntry={editingEntry}
@@ -56,7 +56,7 @@ const TimesheetApp = () => {
             <ReportGenerator allEntries={entries} />
           </div>
 
-          <div className="lg:col-span-2 h-full">
+          <div className="lg:col-span-2">
             <TimesheetList 
               entries={entries} 
               deleteEntry={deleteEntry} 

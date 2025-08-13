@@ -28,7 +28,7 @@ export const useTimesheet = () => {
       console.error("Failed to load entries from Supabase", error);
       setEntries([]);
     } else if (data) {
-      setEntries(data as TimesheetEntry[]);
+      setEntries(data);
     }
     setLoading(false);
   }, []);
@@ -58,7 +58,7 @@ export const useTimesheet = () => {
     const { data, error } = await supabase
       .from('timesheet_entries')
       .insert([entryWithUser])
-      .select()
+      .select('id, date, task, startTime, endTime')
       .single();
 
     if (error) {
@@ -67,7 +67,7 @@ export const useTimesheet = () => {
     }
 
     if (data) {
-        setEntries(prevEntries => [data as TimesheetEntry, ...prevEntries].sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() || b.startTime.localeCompare(a.startTime)));
+        setEntries(prevEntries => [data, ...prevEntries].sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() || b.startTime.localeCompare(a.startTime)));
     }
   }, []);
   
