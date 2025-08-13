@@ -45,7 +45,7 @@ export const useTimesheet = () => {
     );
   
     return () => {
-      subscription.unsubscribe();
+      subscription?.unsubscribe();
     };
   }, [fetchEntries]);
 

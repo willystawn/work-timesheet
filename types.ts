@@ -34,6 +34,7 @@ export type Database = {
           endTime?: string;
           user_id?: string;
         };
+        Relationships: [never];
       };
     };
     Views: {
